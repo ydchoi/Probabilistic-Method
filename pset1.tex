@@ -112,7 +112,8 @@ which primarily grants us
 \eQb
 P( \bigvee_{i=1}^{n} \{ A_i \text{ is monochromatic }\} ) < 1. 
 \eQe
-Therefore, the complement event of $\bigvee_{i=1}^{n}$,
+Therefore, the complement event of $\bigvee_{i=1}^{n} 
+\{ A_i \text{ is monochromatic} \}$,
 namely the event where no $A_i$ is monochromatic, has positive probability. Hence, we have
 shown that there is a coloring of $\Omega$ by 4 colors so that no $A_i$ is monochromatic. 
 \hfill $\qed$ 
@@ -129,6 +130,21 @@ shown that there is a coloring of $\Omega$ by 4 colors so that no $A_i$ is monoc
 \end{figure}
 \end{question}
 \begin{solution}
+By union bound, we have
+\eQb
+P( \bigvee_{i=1}^{n} \{ A_i \text{ has at most 3 colors }\} ) 
+&\leq& \sum_{i=1}^{m} P(\{A_i \text{ has at most 3 colors }\}) \\
+&=& m \cdot 3^{{n \choose 2}} 4^{ -{n \choose 2}}.
+\eQe
+which primarily grants us
+\eQb
+P( \bigvee_{i=1}^{n} \{ A_i \text{ is monochromatic }\} ) < 1. 
+\eQe
+Therefore, the complement event of $\bigvee_{i=1}^{n} 
+\{ A_i \text{ is monochromatic} \}$,
+namely the event where no $A_i$ is monochromatic, has positive probability. Hence, we have
+shown that there is a coloring of $\Omega$ by 4 colors so that no $A_i$ is monochromatic. 
+\hfill $\qed$ 
 \end{solution}
 \bigskip
 
