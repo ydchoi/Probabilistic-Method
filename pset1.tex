@@ -97,25 +97,37 @@ of Probabilistic Method 2016 at Courant Institute of Mathematical Sciences.
 \end{figure}
 \end{question}
 \begin{solution}
-By union bound, we have
+We consider a random vertex 4-coloring of $\Omega$. Formally, we consider a finite
+sample space of all possible vertex 4-coloring of $\Omega$, associated with uniform
+probability, which assigns each outcome in the space with $\frac{1}{|\Omega |}$ probability.
+By the subadditivity of probability, we have
 \eQb
 P( \bigvee_{i=1}^{n} \{ A_i \text{ is monochromatic }\} ) 
 &\leq& \sum_{i=1}^{m} P(\{A_i \text{ is monochromatic}\}) \\
-&=& m \cdot 4^{1 - {n \choose 2}}.
+&=& m \cdot 4^{1 - n}.
 \eQe
 As $m < 4^{n-1}$ and $n \leq 2$, it follows that
 \eQb
-m \cdot 4^{1 - {n \choose 2}} &<& 4^{n-1} \cdot 4^{1 - {n \choose 2}}  \\
-&=& 4^{\frac{n-n^2}{2}} < 1,
+m \cdot 4^{1 - n} &<& 4^{n-1} \cdot 4^{1-n} = 1,
 \eQe
 which primarily grants us
 \eQb
 P( \bigvee_{i=1}^{n} \{ A_i \text{ is monochromatic }\} ) < 1. 
 \eQe
-Therefore, the complement event of $\bigvee_{i=1}^{n} 
-\{ A_i \text{ is monochromatic} \}$,
-namely the event where no $A_i$ is monochromatic, has positive probability. Hence, we have
-shown that there is a coloring of $\Omega$ by 4 colors so that no $A_i$ is monochromatic. 
+By DeMorgan's law, we see that
+\eQb
+(\bigvee_{i=1}^{n} \{ A_i \text{ is monochromatic }\})^c &=& 
+\bigwedge_{i=1}^{n} \{ A_i \text{ is monochromatic }\}^c \\
+&=& \{ \text{No } A_i \text{ is monochromatic} \}. 
+\eQe
+Since the sum of an event and its complement event is $1$ by one of the axioms of probability,
+we have shown that
+\eQb
+P(\{ \text{No } A_i \text{ is monochromatic} \}) &>& 0. 
+\eQe
+In particular, the event, where no $A_i$ is monochromatic, has positive probability. 
+Hence, we have
+shown that there is a coloring of $\Omega$ by 4 colors such that no $A_i$ is monochromatic. 
 \hfill $\qed$ 
 
 \end{solution}
