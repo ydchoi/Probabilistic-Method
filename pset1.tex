@@ -102,22 +102,22 @@ sample space of all possible vertex 4-coloring of $\Omega$, associated with unif
 probability, which assigns each outcome in the space with $\frac{1}{|\Omega |}$ probability.
 By the subadditivity of probability, we have
 \eQb
-P( \bigvee_{i=1}^{n} \{ A_i \text{ is monochromatic }\} ) 
+P( \bigcup_{i=1}^{m} \{ A_i \text{ is monochromatic }\} ) 
 &\leq& \sum_{i=1}^{m} P(\{A_i \text{ is monochromatic}\}) \\
 &=& m \cdot 4^{1 - n}.
 \eQe
-As $m < 4^{n-1}$ and $n \leq 2$, it follows that
+As $m < 4^{n-1}$, it follows that
 \eQb
 m \cdot 4^{1 - n} &<& 4^{n-1} \cdot 4^{1-n} = 1,
 \eQe
 which primarily grants us
 \eQb
-P( \bigvee_{i=1}^{n} \{ A_i \text{ is monochromatic }\} ) < 1. 
+P( \bigcup_{i=1}^{m} \{ A_i \text{ is monochromatic }\} ) < 1. 
 \eQe
-By DeMorgan's law, we see that
+By DeMorgan's laws, we see that
 \eQb
-(\bigvee_{i=1}^{n} \{ A_i \text{ is monochromatic }\})^c &=& 
-\bigwedge_{i=1}^{n} \{ A_i \text{ is monochromatic }\}^c \\
+(\bigcup_{i=1}^{m} \{ A_i \text{ is monochromatic }\})^c &=& 
+\bigcap_{i=1}^{m} \{ A_i \text{ is monochromatic }\}^c \\
 &=& \{ \text{No } A_i \text{ is monochromatic} \}. 
 \eQe
 Since the sum of an event and its complement event is $1$ by one of the axioms of probability,
@@ -125,14 +125,13 @@ we have shown that
 \eQb
 P(\{ \text{No } A_i \text{ is monochromatic} \}) &>& 0. 
 \eQe
-In particular, the event, where no $A_i$ is monochromatic, has positive probability. 
 Hence, we have
 shown that there is a coloring of $\Omega$ by 4 colors such that no $A_i$ is monochromatic. 
 \hfill $\qed$ 
 
 \end{solution}
 
-\bigskip
+\newpage
 
 \begin{question}[3]
 \hfill
@@ -142,23 +141,42 @@ shown that there is a coloring of $\Omega$ by 4 colors such that no $A_i$ is mon
 \end{figure}
 \end{question}
 \begin{solution}
-By union bound, we have
+We consider a random vertex 4-coloring of $\Omega$. Formally, we consider a finite
+sample space of all possible vertex 4-coloring of $\Omega$, associated with uniform
+probability, which assigns each outcome in the space with $\frac{1}{|\Omega |}$ probability.
+By the subadditivity of probability, we have
 \eQb
-P( \bigvee_{i=1}^{n} \{ A_i \text{ has at most 3 colors }\} ) 
-&\leq& \sum_{i=1}^{m} P(\{A_i \text{ has at most 3 colors }\}) \\
-&=& m \cdot 3^{{n \choose 2}} 4^{ -{n \choose 2}}.
+P( \bigcup_{i=1}^{m} \{ A_i \text{ has at most 3 colors }\} ) 
+&\leq& \sum_{i=1}^{m} P(\{ A_i \text{ has at most 3 colors } \}) \\
+&\leq& m \cdot 3^n 4^{-n+1},
+\eQe
+as there are ${ 4 \choose 1 } 3^n$ is an upper bound to 
+ways to have coloring of at most 3 colors for $n$ vertices.  
+Since $m < 3^{-n}4^{n-1}$, it follows that
+\eQb
+m \cdot 3^{n}4^{-n+1}  &<& 3^{-n} 4^{n-1} 3^n 4^{-n+1} = 1,
 \eQe
 which primarily grants us
 \eQb
-P( \bigvee_{i=1}^{n} \{ A_i \text{ is monochromatic }\} ) < 1. 
+P( \bigcup_{i=1}^{m} \{ A_i \text{ has at most 3 colors }\} ) < 1. 
 \eQe
-Therefore, the complement event of $\bigvee_{i=1}^{n} 
-\{ A_i \text{ is monochromatic} \}$,
-namely the event where no $A_i$ is monochromatic, has positive probability. Hence, we have
-shown that there is a coloring of $\Omega$ by 4 colors so that no $A_i$ is monochromatic. 
+By DeMorgan's laws, we see that
+\eQb
+(\bigcup_{i=1}^{m} \{ A_i \text{ has at most 3 colors }\})^c &=& 
+\bigcap_{i=1}^{m} \{ A_i \text{ has at most 3 colors }\}^c \\
+&=& \{ \text{Every } A_i \text{ has 4 colors} \}. 
+\eQe
+Since the sum of an event and its complement event is $1$ by one of the axioms of probability,
+we have shown that
+\eQb
+P(\{ \text{Every } A_i \text{ has 4 colors } \}) &>& 0. 
+\eQe
+Hence, we have
+shown that there is a coloring of $\Omega$ by 4 colors such that every $A_i$ has 4 colors. 
 \hfill $\qed$ 
 \end{solution}
-\bigskip
+
+\newpage
 
 \begin{question}[4]
 \hfill
@@ -170,7 +188,7 @@ shown that there is a coloring of $\Omega$ by 4 colors so that no $A_i$ is monoc
 \begin{solution}
 \end{solution}
 
-\pagebreak
+\newpage
 
 \begin{question}[5]
 \hfill
@@ -179,12 +197,54 @@ shown that there is a coloring of $\Omega$ by 4 colors so that no $A_i$ is monoc
     \includegraphics[width=1\textwidth]{pm-1-5.png}
 \end{figure}
 \end{question}
-\begin{solution} 
+\begin{solution}
+We claim the following: Suppose $m < 2^{k}$. Then, there exists a truth assignment
+such that $\bigvee_{i=1}^{m} C_i$ is satisfied.
 
+\bigskip
+
+We consider a random truth assignment of atoms, $\{ x_1, ... x_n\}$. Formally,
+we consider a finite sample space of all possible truth assignment of atoms,
+associated with uniform probability, which assigns each outcome in the space
+with $\frac{1}{2^n}$ probability.  
+By the subadditivity of probability, we have
+\eQb
+P( \bigcup_{i=1}^{m} \{ C_i \text{ is not satisfied }\} ) 
+&\leq& \sum_{i=1}^{m} P(\{ C_i \text{ is not satisfied } \}) \\
+&\leq& m \cdot 2^{-k},
+\eQe
+as there is only one assignment, which assigns all false values to $k$ variables, 
+that makes $C_i$ clause not satisfied. 
+Since $m < 2^{k}$, it follows that
+\eQb
+m \cdot 2^{-k} < 2^{k} 2^{-k} = 1,
+\eQe
+which primarily grants us
+\eQb
+P( \bigcup_{i=1}^{m} \{ C_i \text{ is not satisfied }\} ) < 1. 
+\eQe
+By DeMorgan's laws, we see that
+\eQb
+(\bigcup_{i=1}^{m} \{ C_i \text{ is not satisfied }\})^c &=& 
+\bigcap_{i=1}^{m} \{ C_i \text{ is not satisfied }\}^c \\
+&=& 
+\bigcap_{i=1}^{m} \{ C_i \text{ is satisfied } \} 
+= \{ \bigvee C_i \text{ is satisfied } \}. 
+\eQe
+Since the sum of an event and its complement event is $1$ by one of the axioms of probability,
+we have shown that
+\eQb
+P(\{ \bigvee_{i=1}^{m}  C_i \text{ is satisfied } \}) &>& 0. 
+\eQe
+Hence, we have
+shown that there is a truth assignment such that  
+$\bigvee_{i=1}^{m} C_i$ is satisfied, when $m < 2^k$. 
+
+\hfill $\qed$ 
  
 \end{solution}
 
-\pagebreak
+\newpage
 
 \begin{question}[6]
 \hfill
