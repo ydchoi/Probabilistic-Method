@@ -87,7 +87,7 @@ of Probabilistic Method 2016 at Courant Institute of Mathematical Sciences.
 \begin{solution}
 \end{solution}
 
-\bigskip
+\pagebreak
 
 \begin{question}[2]
 \hfill
@@ -97,25 +97,26 @@ of Probabilistic Method 2016 at Courant Institute of Mathematical Sciences.
 \end{figure}
 \end{question}
 \begin{solution}
-\textbf{(a)}
-Let $x \in \text{Int} A \cup \text{Int} B$. It follows that there exists a neighborhood of 
-$x$ contained in $A$ or exists a neighborhood of $x$ contained in $B$, respectively denoted 
-as $U_A$ and $U_B$. If we have the existence of $U_A$, it follows that 
-$x \in U_A \subset A \subset A \cup B$. Likewise, if we have the existence of $U_B$, it follows
-that $x \in U_B \subset B \subset A \cup B$. Therefore, we have $x$ is an interior point of $A
-\cup B$.
-Since $x$ was arbitrary, we have shown that $\text{Int} A \cup \text{Int} B 
-\subset \text{Int}(A \cup B)$. We now show that the equality does not hold, by providing
-a counter example. Let $A = \mathbb{Q}$, $B = \mathbb{R\setminus Q}$. Then, 
-$\text{int}\mathbb{R} = \mathbb{R}$ and $\text{int}\mathbb{Q} = \emptyset$ and 
-$\text{int}\mathbb{R\setminus Q} = \emptyset$. Since $\mathbb{R} \not\subset
-\emptyset$, we have shown that the equality does not hold. \hfill $\qed$  
+By union bound, we have
+\eQb
+P( \bigvee_{i=1}^{n} \{ A_i \text{ is monochromatic }\} ) 
+&\leq& \sum_{i=1}^{m} P(\{A_i \text{ is monochromatic}\}) \\
+&=& m \cdot 4^{1 - {n \choose 2}}.
+\eQe
+As $m < 4^{n-1}$ and $n \leq 2$, it follows that
+\eQb
+m \cdot 4^{1 - {n \choose 2}} &<& 4^{n-1} \cdot 4^{1 - {n \choose 2}}  \\
+&=& 4^{\frac{n-n^2}{2}} < 1,
+\eQe
+which primarily grants us
+\eQb
+P( \bigvee_{i=1}^{n} \{ A_i \text{ is monochromatic }\} ) < 1. 
+\eQe
+Therefore, the complement event of $\bigvee_{i=1}^{n}$,
+namely the event where no $A_i$ is monochromatic, has positive probability. Hence, we have
+shown that there is a coloring of $\Omega$ by 4 colors so that no $A_i$ is monochromatic. 
+\hfill $\qed$ 
 
-\bigskip
-
-\textbf{(b)}
-
- 
 \end{solution}
 
 \bigskip
