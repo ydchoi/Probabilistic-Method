@@ -85,9 +85,43 @@ of Probabilistic Method 2016 at Courant Institute of Mathematical Sciences.
 \end{figure}
 \end{question}
 \begin{solution}
+We consider a random equicoloring of $\{1, 2, ..., 4n \}$. Formally, we consider a finite
+sample space of all possible equicoloring of $\{1,2,..., 4n\}$, associated with 
+a uniform probability, which assigns each outcome in the space with 
+$\frac{1}{{4n \choose 2n}}$. First, observe that the probability of the event, where $A_i$ 
+is monochromatic is given by
+\eQb
+P(\{ A_i \text{ is monochromatic} \}) &=& 2\dfrac{{ 3n \choose n}}{{4n \choose 2n}}, 
+\eQe
+as there are ${3n \choose n}$ cases of coloring the rest of the graph
+, when $A_i$ has a fixed monochromatic coloring. 
+ By the subadditivity of probability, we have
+\eQb
+P( \bigcup_{i=1}^{m} \{ A_i \text{ is monochromatic }\} ) 
+&\leq& \sum_{i=1}^{m} P(\{A_i \text{ is monochromatic}\}) \\
+&=& m \cdot 2\dfrac{{3n \choose n}}{{4n \choose 2n}}.
+\eQe
+By DeMorgan's laws, we see that
+\eQb
+(\bigcup_{i=1}^{m} \{ A_i \text{ is monochromatic }\})^c &=& 
+\bigcap_{i=1}^{m} \{ A_i \text{ is monochromatic }\}^c \\
+&=& \{ \text{No } A_i \text{ is monochromatic} \}. 
+\eQe
+Since the sum of an event and its complement event is $1$ by one of the axioms of probability,
+if we have $m < \dfrac{ {4n \choose 2n } }{2{ 3n \choose n}}$, then 
+\eQb
+P(\{ \text{No } A_i \text{ is monochromatic} \}) &>& 0. 
+\eQe
+Now, we express this answer as an asymptotic function of $n$. 
+Using Sterling's formula, we have
+\eQb
+\dfrac{{3n \choose n}}{{4n \choose 2n}} &=& \dfrac{(3n)!(2n)!}{(n!(4n)!} \\
+&=& (\frac{3n}{e})^{3n}\frac{2n}{e} 
+\eQe
+
 \end{solution}
 
-\pagebreak
+\newpage
 
 \begin{question}[2]
 \hfill
@@ -98,7 +132,7 @@ of Probabilistic Method 2016 at Courant Institute of Mathematical Sciences.
 \end{question}
 \begin{solution}
 We consider a random vertex 4-coloring of $\Omega$. Formally, we consider a finite
-sample space of all possible vertex 4-coloring of $\Omega$, associated with uniform
+sample space of all possible vertex 4-coloring of $\Omega$, associated with a uniform
 probability, which assigns each outcome in the space with $\frac{1}{|\Omega |}$ probability.
 By the subadditivity of probability, we have
 \eQb
@@ -142,7 +176,7 @@ shown that there is a coloring of $\Omega$ by 4 colors such that no $A_i$ is mon
 \end{question}
 \begin{solution}
 We consider a random vertex 4-coloring of $\Omega$. Formally, we consider a finite
-sample space of all possible vertex 4-coloring of $\Omega$, associated with uniform
+sample space of all possible vertex 4-coloring of $\Omega$, associated with a uniform
 probability, which assigns each outcome in the space with $\frac{1}{|\Omega |}$ probability.
 By the subadditivity of probability, we have
 \eQb
@@ -205,7 +239,7 @@ such that $\bigvee_{i=1}^{m} C_i$ is satisfied.
 
 We consider a random truth assignment of atoms, $\{ x_1, ... x_n\}$. Formally,
 we consider a finite sample space of all possible truth assignment of atoms,
-associated with uniform probability, which assigns each outcome in the space
+associated with a uniform probability, which assigns each outcome in the space
 with $\frac{1}{2^n}$ probability.  
 By the subadditivity of probability, we have
 \eQb
@@ -246,15 +280,4 @@ $\bigvee_{i=1}^{m} C_i$ is satisfied, when $m < 2^k$.
 
 \newpage
 
-\begin{question}[6]
-\hfill
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=1\textwidth]{pm-1-6.png}
-\end{figure}
-\end{question}
-\begin{solution} 
-
- 
-\end{solution}
 \end{document}
