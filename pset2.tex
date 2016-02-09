@@ -118,34 +118,10 @@ of Probabilistic Method 2016 at Courant Institute of Mathematical Sciences.
 \hfill
 \begin{figure}[h!]
   \centering
-    \includegraphics[width=1\textwidth]{pm-1-4.png}
+    \includegraphics[width=1\textwidth]{PM-2-4.png}
 \end{figure}
 \end{question}
 \begin{solution}
-First of all the problem can be found in the book, Asymptopia.
-We note that $k \sim c n^{\frac{2}{3}}$, thus $k = o(n^{\frac{3}{4}})$.
-Then, by the case 4 of the result in $5.1$ Asymtopia, with Stirling's formula, we have
-\eQb
-{n \choose k} &\sim& 
-e^{-\frac{k^2}{2n}} e^{-\frac{k^3}{6n^2}}\dfrac{n^k}{k!} \\
-&\sim& 
-e^{-\frac{k^2}{2n}} e^{-\frac{k^3}{6n^2}}n^k \dfrac{e^k}{n^k \sqrt{2\pi k}} \\
-\eQe
-Now, by direct computation, it follows that
-\eQb
-B &=& k(n-k) + {k \choose 2} - k + 1 \\
-&=& kn - \dfrac{1}{2}k^2 - \dfrac{3}{2} + 1 \\
-&=& kn - \dfrac{1}{2}k^2 + O(k),
-\eQe
-which then yields
-\eQb
-ln[(1-p)^{k(n-k) + {k \choose 2} - (k-1)}] &=& -k + \dfrac{k^2}{2n} + o(1).
-\eQe
-Now, substituting the above into the first asyptomtic equivalence we have established, we have
-\eQb
-f(n,k,p) &\sim& e^{-\frac{c^3}{6}}n^{-\frac{2}{3}}c^{-\frac{5}{2}}(2\pi)^{-\frac{1}{2}}, 
-\eQe
-as required. \hfill $\qed$
 \end{solution}
 
 \newpage
@@ -154,56 +130,24 @@ as required. \hfill $\qed$
 \hfill
 \begin{figure}[h!]
   \centering
-    \includegraphics[width=1\textwidth]{pm-1-5.png}
+    \includegraphics[width=1\textwidth]{PM-2-5.png}
 \end{figure}
 \end{question}
 \begin{solution}
-We claim the following: Suppose $m < 2^{k}$. Then, there exists a truth assignment
-such that $\bigvee_{i=1}^{m} C_i$ is satisfied.
-
-\bigskip
-
-We consider a random truth assignment of atoms, $\{ x_1, ... x_n\}$. Formally,
-we consider a finite sample space of all possible truth assignment of atoms,
-associated with a uniform probability, which assigns each outcome in the space
-with $\frac{1}{2^n}$ probability.  
-By the subadditivity of probability, we have
-\eQb
-P( \bigcup_{i=1}^{m} \{ C_i \text{ is not satisfied }\} ) 
-&\leq& \sum_{i=1}^{m} P(\{ C_i \text{ is not satisfied } \}) \\
-&\leq& m \cdot 2^{-k},
-\eQe
-as there is only one assignment, which assigns all false values to $k$ variables, 
-that makes $C_i$ clause not satisfied. 
-Since $m < 2^{k}$, it follows that
-\eQb
-m \cdot 2^{-k} < 2^{k} 2^{-k} = 1,
-\eQe
-which primarily grants us
-\eQb
-P( \bigcup_{i=1}^{m} \{ C_i \text{ is not satisfied }\} ) < 1. 
-\eQe
-By DeMorgan's laws, we see that
-\eQb
-(\bigcup_{i=1}^{m} \{ C_i \text{ is not satisfied }\})^c &=& 
-\bigcap_{i=1}^{m} \{ C_i \text{ is not satisfied }\}^c \\
-&=& 
-\bigcap_{i=1}^{m} \{ C_i \text{ is satisfied } \} 
-= \{ \bigvee C_i \text{ is satisfied } \}. 
-\eQe
-Since the sum of an event and its complement event is $1$ by one of the axioms of probability,
-we have shown that
-\eQb
-P(\{ \bigvee_{i=1}^{m}  C_i \text{ is satisfied } \}) &>& 0. 
-\eQe
-Hence, we have
-shown that there is a truth assignment such that  
-$\bigvee_{i=1}^{m} C_i$ is satisfied, when $m < 2^k$. 
-
-\hfill $\qed$ 
  
 \end{solution}
 
 \newpage
+
+\begin{question}[6]
+\hfill
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{PM-2-6.png}
+\end{figure}
+\end{question}
+\begin{solution}
+ 
+\end{solution}
 
 \end{document}
