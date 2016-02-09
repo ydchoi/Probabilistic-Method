@@ -115,9 +115,15 @@ P(\{ \text{No } A_i \text{ is monochromatic} \}) &>& 0.
 Now, we express this answer as an asymptotic function of $n$. 
 Using Sterling's formula, we have
 \eQb
-\dfrac{{3n \choose n}}{{4n \choose 2n}} &=& \dfrac{(3n)!(2n)!}{(n!(4n)!} \\
-&=& (\frac{3n}{e})^{3n}\frac{2n}{e} 
+2\dfrac{{3n \choose n}}{{4n \choose 2n}} &=& 2\dfrac{(3n)!(2n)!}{(n!(4n)!} \\
+&=& 2\dfrac{(\frac{3n}{e})^{3n}(\frac{2n}{e})^{2n}\sqrt{2\pi(3n)}
+\sqrt{2\pi(2n)}}{(\frac{n}{e})^{n}(\frac{4n}{e})^{4n}
+\sqrt{2\pi(n)}\sqrt{2\pi(4n)}}(1 + o(1)) \\ 
+&=& \sqrt{6}(\dfrac{3}{4})^{3n}(1 + o(1)),
 \eQe
+as required. It follows that the main asymptotic term on 
+the upper bound of $m$ is the $(\dfrac{4}{3})^{3n}$ term, which is 
+an exponential function of $n$.  \hfill $\qed$
 
 \end{solution}
 
@@ -220,6 +226,30 @@ shown that there is a coloring of $\Omega$ by 4 colors such that every $A_i$ has
 \end{figure}
 \end{question}
 \begin{solution}
+First of all the problem can be found in the book, Asymptopia.
+We note that $k \sim c n^{\frac{2}{3}}$, thus $k = o(n^{\frac{3}{4}})$.
+Then, by the case 4 of the result in $5.1$ Asymtopia, with Stirling's formula, we have
+\eQb
+{n \choose k} &\sim& 
+e^{-\frac{k^2}{2n}} e^{-\frac{k^3}{6n^2}}\dfrac{n^k}{k!} \\
+&\sim& 
+e^{-\frac{k^2}{2n}} e^{-\frac{k^3}{6n^2}}n^k \dfrac{e^k}{n^k \sqrt{2\pi k}} \\
+\eQe
+Now, by direct computation, it follows that
+\eQb
+B &=& k(n-k) + {k \choose 2} - k + 1 \\
+&=& kn - \dfrac{1}{2}k^2 - \dfrac{3}{2} + 1 \\
+&=& kn - \dfrac{1}{2}k^2 + O(k),
+\eQe
+which then yields
+\eQb
+ln[(1-p)^{k(n-k) + {k \choose 2} - (k-1)}] &=& -k + \dfrac{k^2}{2n} + o(1).
+\eQe
+Now, substituting the above into the first asyptomtic equivalence we have established, we have
+\eQb
+f(n,k,p) &\sim& e^{-\frac{c^3}{6}}n^{-\frac{2}{3}}c^{-\frac{5}{2}}(2\pi)^{-\frac{1}{2}}, 
+\eQe
+as required. \hfill $\qed$
 \end{solution}
 
 \newpage
