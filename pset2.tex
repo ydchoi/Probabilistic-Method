@@ -144,7 +144,7 @@ the matrix with at least $f(p)$ entries with $1$.
 
 \smallskip
 
-We now optimize this result by maximizing $f(p)$ with respect to $p$. Observe that $m$ 
+We now optimize this result by maximizing $f(p)$ with respect to $p$. Observe that $f$ 
 is concave with respect to $p \in [0,1]$. Solving for the local maxima by setting the
 first-order derivative equals to $0$, we get that $f$ is maximized at 
 $p^* = (\dfrac{n^2}{9{n \choose 3}^2})^{\frac{1}{8}} = (\dfrac{2}{(n-1)(n-2)})^{\frac{1}{4}}$.
@@ -171,7 +171,48 @@ We have shown that $m(n) = \Omega(n^{\frac{3}{2}})$.
 \end{figure}
 \end{question}
 \begin{solution}
- 
+Note that we use the langauge of $n-$uniform hypergraph, which is an equivalent problem 
+as the problem under consideration.
+Before preceeding with the main part of the proof, we define an object, called
+a conflicting pair, in a two-coloring scheme.  
+We say that an ordered pair of edges $(e,f)$ a conflicting pair, if
+$e$ is monochromatic with some color $k$, $f \setminus \{ v \}$ is monochromatic
+with the color  not $k$, and $v \in e \cap f$. Notice that the algorithm can potentially
+fail, if within the coloring scheme, it chooses $v$ to flip its color. Hence, 
+the existence of a conflicting pair is a necessary condition for a particular coloring 
+to result in a failure with the given algorithm. Thereofre, if we consider the 
+sample space of all possible random coloring of $\Omega$, associated with a unifrom 
+probability, by the monotonicity of probability, we have
+that the probability of the existence of a conflicting pair is an upper bound for the
+probability of the coloring resulting in a failure. Lastly, one should note that
+for a fixed ordered pair of edges, $(e,f)$, we have
+\eQb
+P(\{ (e,f) \text{ is a conflicting pair } \}) &\leq& 2^{2-2n} 
+\eQe
+
+\smallskip
+We now proceed with the main part of the proof.
+Color $\Omega$ randomly with two colors. By the above remark, and the repeated use
+of subadditivty of probability, we obtain
+\eQb
+P(\{ \text{ colorings that the algorithm fails on} \})  &\leq& 
+P( \{ \text{ colorings that contain a conflicting pair} \}) \\
+&\leq& P(\bigcup_{(e,f) \in E\times E} \{ (e,f) \text{ is a conflicting pair} \}) \\ 
+&\leq& \sum_{(e,f) \in E \times E} P( \{ (e,f) \text{ is a conflicting pair} \} ) \\ 
+&\leq& m^2 2^{2 - 2n}, \\
+\eQe
+where $E$ denotes the edge set and the fact that the probability of having a conflicting pair
+coloring is at most $2 \cdot 2^{1 - 2n }$. If $m^2 2^{2 -2n} < 1$, we can gurantee that
+the failure probability is less than $1$. Substituting $2^{n-1}k$ for $m$, we have
+\eQb
+(2^{n-1}k)^2 2^{2-2n} < 1,
+\eQe
+which is equvialent to 
+\eQb
+dd
+\eQe
+
+
 \end{solution}
 
 \newpage
