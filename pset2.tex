@@ -140,7 +140,7 @@ E[X - Y] &=& n^2 p - {n \choose 3}^2 p^{9} = f(p).
 Hence, there exists a random assignment, for which the number of $1$s minus 
 the number of $3 \times 3$ submatrices of $1$ is at least $f(p)$.
 Fix such a coloring. Select one entry from each submatrix and change to $0$. This leaves
-the matrix with at least $f(p)$ vertices. 
+the matrix with at least $f(p)$ entries with $1$. 
 
 \smallskip
 
@@ -150,7 +150,7 @@ first-order derivative equals to $0$, we get that $f$ is maximized at
 $p^* = (\dfrac{n^2}{9{n \choose 3}^2})^{\frac{1}{8}} = (\dfrac{2}{(n-1)(n-2)})^{\frac{1}{4}}$.
 Substituting $p^*$ back into $f(p)$, we obtain
 \eQb
-m(p^*) &=& n^2(\dfrac{2}{(n-1)(n-2)})^{\frac{1}{4}} - {n \choose 3}^2 
+f(p^*) &=& n^2(\dfrac{2}{(n-1)(n-2)})^{\frac{1}{4}} - {n \choose 3}^2 
 \dfrac{n^2}{9 {n \choose 3}^2}(\dfrac{2}{(n-1)(n-2)})^{\frac{1}{4}} \\
 &=& \dfrac{8}{9}n^2(\dfrac{2}{(n-1)(n-2)})^{\frac{1}{4}} \\ 
 &\sim& \dfrac{8}{9}2^{\frac{1}{4}}n^{\frac{3}{2}}. 
