@@ -122,6 +122,40 @@ of Probabilistic Method 2016 at Courant Institute of Mathematical Sciences.
 \end{figure}
 \end{question}
 \begin{solution}
+Consider a random $n \times n$ matrix, $M_{n}$, obtained 
+by assigning each entry independently either $1$ or $0$, where the probability 
+of assigning $1$ is $p$. Let $X$ be a random variable, which counts
+number of $1$s in the matrix, and $Y$ be a random variable, which counts 
+number of $3 \times 3$ submatrices of all $1$s. 
+For any $3 \times 3$ submatrix $S$, let $Y_S$ be the
+indicator random variable for the event for which the submatrix $S$ has entries of all $1$s,
+so that $Y = \sum Y_{S}$. By Linearity of Expectation, we have
+\eQb
+E[Y] &=& \sum E[Y_S] = {n \choose 3}^2 p^{9}. \\
+\eQe 
+Clearly, $E[X] = n^2 p$. Therefore, again by Linearity of Expectation, it follows that
+\eQb
+E[X - Y] &=& n^2 p - {n \choose 3}^2 p^{9} = m(p). 
+\eQe
+Hence, there exists a random assignment, for which the number of $1$s minus 
+the number of $3 \times 3$ submatrices of $1$ is at least $m(p)$.
+Fix such a coloring. Select one entry from each submatrix and change to $0$. This leaves
+the matrix with at least $m(p)$ vertices. 
+
+\smallskip
+
+We now optimize this result by maximizing $m(p)$ with respect to $p$. Observe that $m$ 
+is concave with respect to $p \in [0,1]$. Solving for the local maxima by setting the
+first-order derivative equals to $0$, we get that $m$ is maximized at 
+$p^* = (\dfrac{n^2}{9{n \choose 3}^2})^{\frac{1}{8}} = (\dfrac{2}{(n-1)(n-2)})^{\frac{1}{4}}$.
+Substituting $p^*$ back into $m(p)$, we obtain
+\eQb
+m(p^*) &=& n^2(\dfrac{2}{(n-1)(n-2)})^{\frac{1}{4}} - {n \choose 3}^2 
+\dfrac{n^2}{9 {n \choose 3}^2}(\dfrac{2}{(n-1)(n-2)})^{\frac{1}{4}} \\
+&=& \dfrac{8}{9}n^2(\dfrac{2}{(n-1)(n-2)})^{\frac{1}{4}} \\ 
+&\sim& \dfrac{8}{9}2^{\frac{1}{4}}n^{\frac{3}{2}}. 
+\eQe
+ 
 \end{solution}
 
 \newpage
