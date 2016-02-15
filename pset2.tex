@@ -214,18 +214,19 @@ The equality is achieved when $e$ and $f$ share exactly one vertex.
 
 \bigskip
 
-\begin{lemma}[5.1. An equivalent condition for failure]
+\begin{lemma}[5.1. Failure implies 
+$\mathbf{\bigcup_{(e,f) \in E \times E} T_{(e,f)}}$] 
 \textit{
-The algorithm fails, if and only if there exists a conflicting pair $(e,f)$
+The algorithm fails, only if there exists a conflicting pair $(e,f)$
 with its peacebreaker $v$ chosen at the second stage at the review of $e$.}
 \end{lemma}
 \begin{proof}
 Observe that any monochromatic edge after the initial coloring cannot cause a failure, 
 because at least one of its vertex will be chosen to flip the color at the second stage. 
-Hence, failure occurs, if and only if there exists an edge, having all but one color
+Hence, failure occurs, if only if there exists an edge, having all but one color
 monochromatic, end up having a monochromatic coloring with the majority color.
 Now, for any edge, having all but one color monochromatic, will end up having the 
-monochromatic coloring, if only if there exists a monochromatic edge containing the one vertex
+monochromatic coloring, only if there exists a monochromatic edge containing the one vertex
 with the opposite color and the vertex is chosen to be fliped at the second stage of 
 the algorithm, as the algorithm reviews the monochromatic edge.
 This is precisely the identification of a conflicting pair with its 
@@ -236,13 +237,13 @@ peacebreaker. Hence, we have proven the claim.
 
 By the established lemma, we obtain
 \eQb
-\{ \text{ failure probability} \} &=& \bigcup_{(e,f) \in E \times E} T_{(e,f)}. 
+\{ \text{ failure} \} &\implies& \bigcup_{(e,f) \in E \times E} T_{(e,f)}. 
 \eQe
 As there are $m^2$ ordered pairs of edges in the hypergraph, by th above equality,
 and the subadditivity of probability, we obtain
 \eQb
-P(\{ \text{ failure probability }\})  
-&=& P(\bigcup_{(e,f) \in E\times E} T_{(e,f)}) \\ 
+P(\{ \text{ failure }\})  
+&\leq& P(\bigcup_{(e,f) \in E\times E} T_{(e,f)}) \\ 
 &\leq& \sum_{(e,f) \in E \times E} P(T_{(e,f)} ) \\ 
 &\leq& m^2 2^{2 - 2n} n^{-1}, \\
 \eQe
