@@ -180,7 +180,7 @@ We have shown that $m(n) = \Omega(n^{\frac{3}{2}})$.
 \begin{solution}
 Note that we use the langauge of $n-$uniform hypergraph, which is an equivalent problem 
 as the problem under consideration.
-Before preceeding with the main part of the proof, we define an object, called
+Before proceeding with the main part of the proof, we define an object, called
 a conflicting pair, in a two-coloring scheme.  
 We say that an ordered pair of edges $(e,f)$ a conflicting pair, if
 $e$ is monochromatic with some color $k$, and for some $v \in e \cap f$,
@@ -206,7 +206,7 @@ P(\{ (e,f) \text{ is a conflicting pair after the i.c.} \}) \\
 \{ (e,f) \text{ is a conflicting pair after the i.c.} \})  \\
 &\leq& 2^{2-2n} n^{-1},
 \eQe
-where i.c. denotes the initial coloring, previous the second round of flipping colors.
+where i.c. denotes the initial coloring, prior to the second round of flipping colors.
 One should note that the last quantity forms an inequality, as it might be that
 there is a no intersection between $e$ and $f$ to begin with, which gives $0$
 probability for $(e,f)$ being a conflicting pair after the initial coloring. 
@@ -226,6 +226,10 @@ the failure probability is less than $1$. Substituting $2^{n-1}k$ for $m$, we ha
 \eQe
 which is equivalent to $ k < \sqrt{n}$. Hence, by taking $k = \sqrt{n} - 1$, we can
 have a failure probability less than $1$. We have shown that $k = \Omega(\sqrt{ n})$.
+One should note that this bound is higher by a factor of $\ln(n)$ compared to 
+the state of the art lower bound, established Kozik et al. As the note mentions,
+this is not a surprise, as the "failure" defined through this procedure is not
+inclusive enough to capture all possible ways an edge $e$ could end up monochromatic.
 \hfill $\qed$
 
 
