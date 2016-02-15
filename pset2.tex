@@ -201,12 +201,13 @@ of $T_{(e,f)}$ will serve as an upper bound to the failure probability. Note tha
 the probability of $T_{(e,f)}$ is given by
 \eQb
 P(T_{(e,f)}) &=&  
-P(\{ (e,f) \text{ is a conflicting pair after the initial coloring} \}) \\ 
+P(\{ (e,f) \text{ is a conflicting pair after the i.c.} \}) \\ 
 &\cdot& P(\{ v \text{ is chosen at the review of $e$ } \} | 
-\{ (e,f) \text{ is a conflicting pair after the initial coloring} \}) \\
-&\leq& 2^{2-2n} n^{-1}. 
+\{ (e,f) \text{ is a conflicting pair after the i.c.} \})  \\
+&\leq& 2^{2-2n} n^{-1},
 \eQe
-One should note that the last quantity is an inequality, as it might be that
+where i.c. denotes the initial coloring, previous the second round of flipping colors.
+One should note that the last quantity forms an inequality, as it might be that
 there is a no intersection between $e$ and $f$ to begin with, which gives $0$
 probability for $(e,f)$ being a conflicting pair after the initial coloring. 
 The equality is achieved when $e$ and $f$ share exactly one vertex. 
