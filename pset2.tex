@@ -85,6 +85,13 @@ of Probabilistic Method 2016 at Courant Institute of Mathematical Sciences.
 \end{figure}
 \end{question}
 \begin{solution}
+By expanding the terms and using linearity of expectation, we have
+\eQb
+E[X^2] &=& E[(\sum_{i=1}^{n} X_i)^2] \\
+&=& E[\sum_{i=1}^{n} X_i^2] + 2\sum_{1\leq i<j \leq n}X_i X_j] \\
+&=& \sum_{i=1}^{n} E[X_i^2] + 2\sum_{1 \leq i < j \leq n} E[X_i X_j]. \\ 
+\eQe
+For 
 \end{solution}
 
 \newpage
@@ -176,41 +183,49 @@ as the problem under consideration.
 Before preceeding with the main part of the proof, we define an object, called
 a conflicting pair, in a two-coloring scheme.  
 We say that an ordered pair of edges $(e,f)$ a conflicting pair, if
-$e$ is monochromatic with some color $k$, $f \setminus \{ v \}$ is monochromatic
-with the color  not $k$, and $v \in e \cap f$. Notice that the algorithm can potentially
-fail, if within the coloring scheme, it chooses $v$ to flip its color. Hence, 
-the existence of a conflicting pair is a necessary condition for a particular coloring 
-to result in a failure with the given algorithm. Thereofre, if we consider the 
-sample space of all possible random coloring of $\Omega$, associated with a unifrom 
-probability, by the monotonicity of probability, we have
-that the probability of the existence of a conflicting pair is an upper bound for the
-probability of the coloring resulting in a failure. Lastly, one should note that
-for a fixed ordered pair of edges, $(e,f)$, we have
-\eQb
-P(\{ (e,f) \text{ is a conflicting pair } \}) &\leq& 2^{2-2n} 
-\eQe
+$e$ is monochromatic with some color $k$, and for some $v \in e \cap f$,
+$f \setminus \{ v \}$ is monochromatic
+with the color  not $k$. We call the vertex $v$ the peacebreaker of $(e,f)$. 
 
 \smallskip
-We now proceed with the main part of the proof.
-Color $\Omega$ randomly with two colors. By the above remark, and the repeated use
-of subadditivty of probability, we obtain
+
+We now consider the randomized algorithm. Fix $(e,f)$ an ordered pair of edges from 
+the hypergraph.
+Notice that the algorithm will
+fail, if, after the initial coloring, $(e,f)$ is a conflicting pair with 
+a peacebreaker $v$, and at the second stage chooses the peacebreaker $v$ 
+to flip its color, exactly when it reviews $e$. The event just described, which 
+we denote as $T_{(e,f)}$,
+is hence a sufficient condition for a failure to occur. Therefore, the probability
+of $T_{(e,f)}$ will serve as an upper bound to the failure probability. Note that
+the probability of $T_{(e,f)}$ is given by
 \eQb
-P(\{ \text{ colorings that the algorithm fails on} \})  &\leq& 
-P( \{ \text{ colorings that contain a conflicting pair} \}) \\
-&\leq& P(\bigcup_{(e,f) \in E\times E} \{ (e,f) \text{ is a conflicting pair} \}) \\ 
-&\leq& \sum_{(e,f) \in E \times E} P( \{ (e,f) \text{ is a conflicting pair} \} ) \\ 
-&\leq& m^2 2^{2 - 2n}, \\
+P(T) &=&  
+P(\{ (e,f) \text{ is a conflicting pair after the initial coloring} \}) \\ 
+&\cdot& P(\{ v \text{ is chosen at the review of $e$ } \} | 
+\{ (e,f) \text{ is a conflicting pair after the initial coloring} \}) \\
+&\leq& 2^{2-2n} n^{-1}. 
 \eQe
-where $E$ denotes the edge set and the fact that the probability of having a conflicting pair
-coloring is at most $2 \cdot 2^{1 - 2n }$. If $m^2 2^{2 -2n} < 1$, we can gurantee that
+One should note that the last quantity is an inequality, as it might be that
+there is a no intersection between $e$ and $f$ to begin with, which gives $0$
+probability for $(e,f)$ being a conflicting pair after the initial coloring. 
+The equality is achieved when $e$ and $f$ share exactly one vertex. 
+As there are $m^2$ ordered pairs of edges in the hypergraph, by the subadditivity of
+probability, we obtain
+\eQb
+P(\{ \text{ failure probability }\})  
+&\leq& P(\bigcup_{(e,f) \in E\times E} T_{(e,f)}) \\ 
+&\leq& \sum_{(e,f) \in E \times E} P(T_{(e,f)} ) \\ 
+&\leq& m^2 2^{2 - 2n} n^{-1}, \\
+\eQe
+where $E$ denotes the edge set. If $m^2 2^{2 -2n}n^{-1} < 1$, we can ensure that
 the failure probability is less than $1$. Substituting $2^{n-1}k$ for $m$, we have
 \eQb
-(2^{n-1}k)^2 2^{2-2n} < 1,
+(2^{n-1}k)^2 2^{2-2n} n^{-1} < 1,
 \eQe
-which is equvialent to 
-\eQb
-dd
-\eQe
+which is equivalent to $ k < \sqrt{n}$. Hence, by taking $k = \sqrt{n} - 1$, we can
+have a failure probability less than $1$. We have shown that $k = \Omega(\sqrt{ n})$.
+\hfill $\qed$
 
 
 \end{solution}
