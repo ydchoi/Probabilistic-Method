@@ -183,13 +183,16 @@ We have shown that $m(n) = \Omega(n^{\frac{3}{2}})$.
 Note that we use the langauge of $n-$uniform hypergraph, which is an equivalent problem 
 to the problem under consideration.
 Before proceeding with the main part of the proof, we define an object, called
-a conflicting pair, in a two-coloring scheme.  
-We say that an ordered pair of edges $(e,f)$ a conflicting pair, if
-$e$ is monochromatic with some color $k$, and for some $v \in e \cap f$,
-$f \setminus \{ v \}$ is monochromatic
-with the color  not $k$. We call the vertex $v$ the peacebreaker of $(e,f)$. 
+a conflicting pair, and peacebreaker, in a two-coloring scheme. 
 
-\bigskip
+\begin{definition}[5.1]
+An ordered pair of edges $(e,f)$ is said to be a \textbf{conflicting pair}
+, if $e$ is monochromatic with some color $k$, and for some $v \in e \cap f$,
+$f \setminus \{ v \}$ is monochromatic
+with the color  not $k$. We call the vertex $v$ the \textbf{peacebreaker} of $(e,f)$. 
+\end{definition}
+
+\smallskip
 
 We now consider the randomized algorithm. Fix $(e,f)$ an ordered pair of edges from 
 the hypergraph.
@@ -217,7 +220,7 @@ with equality being achieved when $e$ and $f$ share exactly one vertex.
 
 \bigskip
 
-\begin{lemma}[5.1. Failure implies 
+\begin{lemma}[5.2. Failure implies 
 $\mathbf{\bigcup_{(e,f) \in E \times E} T_{(e,f)}}$] 
 \textit{
 The algorithm fails, only if there exists a conflicting pair $(e,f)$
@@ -240,7 +243,7 @@ peacebreaker. Hence, we have proven the claim.
 
 By the established lemma, we obtain
 \eQb
-\{ \text{ failure} \} &\subseteq& \bigcup_{(e,f) \in E \times E} T_{(e,f)}. 
+\{ \text{ failure} \} &\implies & \bigcup_{(e,f) \in E \times E} T_{(e,f)}. 
 \eQe
 As there are $m^2$ ordered pairs of edges in the hypergraph, by th above equality,
 and the subadditivity of probability, we obtain
