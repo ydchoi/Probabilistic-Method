@@ -163,11 +163,52 @@ as required. \hfill $\qed$
 \begin{solution}
 \textbf{(a)} By definition of $(n)_k$, it follows that
 \eQb
-\dfrac{1}{\sqrt{n}} \sum_{k=1}^{\epsilon \sqrt{n}} (n)_{k} n^{-k} &\leq& \dfrac{1}{\sqrt{n}}
-\dfrac{1}{\sqrt{n}} \sum_{k=1}^{\epsilon \sqrt{n}} 1 = \epsilon, 
+\dfrac{1}{\sqrt{n}} \sum_{k=1}^{\epsilon \sqrt{n}} (n)_{k} n^{-k} &\leq& 
+\dfrac{1}{\sqrt{n}} \sum_{k=1}^{\epsilon \sqrt{n}} \dfrac{n...(n-k+1)}{n...n} \\ 
+&=& \dfrac{1}{\sqrt{n}} \sum_{k=1}^{\epsilon \sqrt{n}} 1 = \epsilon, 
 \eQe
 which goes to $0$ as $\epsilon \to 0$.  
 
+\bigskip
+
+\textbf{(b)}
+By taking the natural log, we have
+\eQb
+\ln(\dfrac{(n)_k}{n^k} &=& \sum_{i=1}^{k-1}(1 - \dfrac{i}{n}) \\
+&\leq& \sum_{i=1}^{k-1} (-\dfrac{i}{n}) \\
+&=& -\dfrac{k(k-1)}{2n}.
+\eQe
+It follows that 
+\eQb
+\sum_{k = k\sqrt{n}}^{n} \dfrac{(n)_k}{n^k} &\leq& 
+\int_{k\sqrt{n} }^{\infty} e^{\frac{-k^2}{4n}}dk \\
+&\leq& \sqrt{n} \int_{k-1}^{\infty}  e^{\frac{-c^2}{4}}dc,
+\eQe
+when $k = c\sqrt{n}$. The upper bound goes to $0$ as $k$ goes to $\infty$. Therefore,
+by the squeeze theorem (the term is trivially nonnegative),
+we have shown the desired claim.
+
+\bigskip
+
+\textbf{(c)} 
+Using the additivity of summation, and by the problem $(2)$,
+we obtain
+\eQb
+\sum_{k=1}^{n} \dfrac{(n)_k}{n^k} &=&
+\sum_{k=1}^{\epsilon \sqrt{n}} \dfrac{(n)_k}{n^k} + 
+\sum_{k=\epsilon \sqrt{n}}^{ k \sqrt{n}} \dfrac{(n)_k}{n^k} + 
+\sum_{k=k \sqrt{n} }^{n} \dfrac{(n)_k}{n^k} \\
+&\sim& 
+\sum_{k=1}^{\epsilon \sqrt{n}} \dfrac{(n)_k}{n^k}
++ \sqrt{n} \int_{\epsilon}^{k} e^{-\frac{c^2}{2}} dc + 
+\sum_{k=k \sqrt{n} }^{n} \dfrac{(n)_k}{n^k}.
+\eQe
+By part $(a)$ and $(b)$, as $\epsilon \to 0$ and $k \to \infty$, we have 
+the first term and the thrid term going to $0$. Therefore, the desired limit is
+\eQb
+\sqrt{n} \int_{0}^{\infty} e^{-c^2}{2} dc &\sim& 1.25 \sqrt{n},
+\eQe
+as required. \hfill $\qed$
 \end{solution}
 
 \newpage
