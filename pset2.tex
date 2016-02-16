@@ -87,16 +87,39 @@ of Probabilistic Method 2016 at Courant Institute of Mathematical Sciences.
 \end{figure}
 \end{question}
 \begin{solution}
-By expanding the terms and using linearity of expectation, we have
+By expanding the terms, using linearity of expectation,  we have
 \eQb
 E[X^2] &=& E[(\sum_{i=1}^{n} X_i)^2] \\
 &=& E[\sum_{i=1}^{n} X_i^2] + 2\sum_{1\leq i<j \leq n}X_i X_j] \\
-&=& \sum_{i=1}^{n} E[X_i^2] + 2\sum_{1 \leq i < j \leq n} E[X_i X_j]. \\ 
+&=& \sum_{i=1}^{n} E[X_i^2] + 2\sum_{1 \leq i < j \leq n} E[X_i X_j]. \\
 \eQe
-For 
+Observe that 
+\eQb
+E[X_i^2] &=& 1^2 \dfrac{1}{2} + (-1)^2 \dfrac{1}{2} \\
+&=& \dfrac{1}{2} + \dfrac{1}{2} = 1.
+\eQe
+From the independence assumption, we have
+\eQb
+E[X_i X_j ] &=& E[X_i] E[X_j] = 0,
+\eQe
+for $i \neq j$. 
+Therefore, by substitution to the previous equality, we have
+\eQb
+E[X^2] &=& n.
+\eQe
+Now, for the $E[X^4]$, we note that the terms with $E[X_i]$ terms will all be $0$.
+Therefore, we directly obtain
+\eQb
+E[X^4] &=& \sum_{i=1}^{n} E[X_i]^4 + {4 \choose 2}E[\sum_{1\leq i \leq j \leq n}
+X_i^2 X_j^2] \\
+&=& n + {4 \choose 2}{n \choose 2} = 3n^2 - 2n. 
+\eQe
+\hfill $\qed$
+
+
 \end{solution}
 
-\newpage
+\bigskip
 
 \begin{question}[2]
 \hfill
@@ -106,6 +129,25 @@ For
 \end{figure}
 \end{question}
 \begin{solution}
+By definition, we have
+\eQb
+(n)_{k}k^{-k} &=& \dfrac{n!}{(n-k)!}n^{-k} \\
+&=& {n \choose k} k! n^{-k}.
+\eQe
+As we are given $k \sim c\sqrt{n}$, from Asymtopia, we have
+\eQb
+{n \choose k} \sim e^{-\frac{c^2}{2}} \dfrac{n^k}{k!}.
+\eQe
+By the Stirling's formula, it immediately follows that
+\eQb
+(n)_{k} n^{-k} &\sim& e^{-\frac{c^2}{2}} \dfrac{n^k}{k!} k! n^{-k} = e^{-\frac{c^2}{2}}.
+\eQe
+Using the integration given in Asymtopia, we have
+\eQb
+\sum_{k=\sqrt{n}}^{2\sqrt{n}} (n)_{k}n^{-k} &\sim& \int_{1}^{2} \sqrt{n} e^{-\frac{c^2}{2}} dc \\
+&\sim& 0.34\sqrt{n},
+\eQe
+as required. \hfill $\qed$
 
 \end{solution}
 
@@ -185,6 +227,8 @@ to the problem under consideration.
 Before proceeding with the main part of the proof, we define an object, called
 a conflicting pair, and peacebreaker, in a two-coloring scheme. 
 
+\smallskip
+
 \begin{definition}[5.1]
 An ordered pair of edges $(e,f)$ is said to be a \textbf{conflicting pair}
 , if $e$ is monochromatic with some color $k$, and for some $v \in e \cap f$,
@@ -212,7 +256,7 @@ P(\{ (e,f) \text{ is a conflicting pair after the i.c.} \}) \\
 &=& 2^{2-2n} n^{-1},
 \eQe
 where i.c. denotes the initial coloring, prior to the second round of flipping colors.
-Therefore, $P(T_{(e,f)}$ in general can be upper-bounded as follows:
+Therefore, $P(T_{(e,f)})$ in general can be upper-bounded as follows:
 \eQb
 P(T_{(e,f)}) &\leq& 2^{2-2n}n^{-1},
 \eQe
@@ -245,7 +289,7 @@ By the established lemma, we obtain
 \eQb
 \{ \text{ failure} \} &\implies & \bigcup_{(e,f) \in E \times E} T_{(e,f)}. 
 \eQe
-As there are $m^2$ ordered pairs of edges in the hypergraph, by th above equality,
+As there are $m^2$ ordered pairs of edges in the hypergraph, by the above equality,
 and the subadditivity of probability, we obtain
 \eQb
 P(\{ \text{ failure }\})  
@@ -279,7 +323,54 @@ inclusive enough to capture all possible ways an edge $e$ could end up monochrom
 \end{figure}
 \end{question}
 \begin{solution}
+\textbf{(a)}
+By definition of expectation, it follows that
+\eQb
+E[e^{\lambda x_i}] &=& \dfrac{e^{\lambda} + e^{-\lambda}}{2} = \cosh(\lambda). \\
+\eQe
+
+\bigskip
  
+\textbf{(b)}
+By using the fact that expectation of product of independent random variables is a 
+product of expectations and $(b)$, we have
+\eQb
+E[e^{\lambda X}] &=& \prod_{i=1}^{n}E[e^{\lambda X_i}] \\
+&=& (\cosh(\lambda))^n.
+\eQe
+
+\bigskip
+
+\textbf{(c)} 
+By the use of Chernoff bound, we obtain
+\eQb
+P(X > \dfrac{n}{2}) < (\dfrac{e^{\frac{\lambda}{2}} + e^{-\frac{3\lambda}{2}}}{2})^n.
+\eQe
+Let $f(\lambda) = e^{\frac{\lambda}{2}} + e^{-\frac{3\lambda}{2}}$. By taking the
+first order derivative and setting it equal to $0$, we obtain $e^{\frac{\lambda}{2}} 
+= 3e^{-\frac{3\lambda}{2}}$. Solving this equality, we get the optimal $\lambda$, 
+$\lambda^*$, is
+$\dfrac{\ln(3)}{2}$. Plugging it back in, we get that $f(\lambda^*) = 3^{\frac{1}{4} + \frac{3}{4}}$.
+Hence, it follows that
+\eQb
+P(X > \dfrac{n}{2}) < (\dfrac{2}{3^{\frac{3}{4}}})^n ,
+\eQe
+as required.
+
+\bigskip
+
+\textbf{(d)} Using the Stirling's formula, we have
+\eQb
+P(X \geq \dfrac{n}{2}) &\leq& P(X = \dfrac{n}{2}) \\
+&=& 2^{-n}{n \choose \frac{3n}{4}} \\
+&=& 2^{-n}\dfrac{n!}{(\frac{3n}{4})!(\frac{n}{4})!} \\
+&\sim& 2^{-n}\dfrac{\sqrt{2\pi n} (\frac{n}{e})^n }{\sqrt{2\pi \frac{3n}{4}} 
+(\frac{3n}{4e})^{\frac{3n}{4}} \sqrt{2\pi \frac{n}{4} }(\frac{n}{4e})^{\frac{n}{4}}} \\
+&=& \dfrac{2\sqrt{2}}{\sqrt{3\pi n}}(\dfrac{2}{3^{\frac{3}{4}}})^n. 
+\eQe
+The main terms are the same for the upper bound and the lower bound as remarked.
+\hfill $\qed$ 
+
 \end{solution}
 
 \end{document}
