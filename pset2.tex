@@ -196,21 +196,24 @@ the hypergraph.
 Consider an event, where after the initial coloring, $(e,f)$ is a conflicting pair with 
 a peacebreaker $v$, and at the second stage chooses the peacebreaker $v$ 
 to flip its color, exactly when it reviews $e$. We denote such event 
-as $T_{(e,f)}$,
-Note that the probability of $T_{(e,f)}$ is given by
+as $T_{(e,f)}$. We first note that if $e$ and $f$ have a number of
+common vertices not equal to $1$, we have that $P(T_{(e,f)}) = 0$, as
+no matter what coloring is given to $e$ and $f$, they cannot be a conflicting pair. 
+Now, for the case where $e,f$ exactly have one vertex in common,
+the probability of $T_{(e,f)}$ is given by
 \eQb
 P(T_{(e,f)}) &=&  
 P(\{ (e,f) \text{ is a conflicting pair after the i.c.} \}) \\ 
 &\cdot& P(\{ v \text{ is chosen at the review of $e$ } \} | 
 \{ (e,f) \text{ is a conflicting pair after the i.c.} \})  \\
-&\leq& 2^{2-2n} n^{-1},
+&=& 2^{2-2n} n^{-1},
 \eQe
 where i.c. denotes the initial coloring, prior to the second round of flipping colors.
-One should note that the last quantity forms an inequality, as it might be that
-with the given edge configuration,
-the intersection between $e$ and $f$ does not have a single vertex, which gives $0$
-probability for $(e,f)$ being a conflicting pair after the initial coloring. 
-The equality is achieved when $e$ and $f$ share exactly one vertex.
+Therefore, $P(T_{(e,f)}$ in general can be upper-bounded as
+\eQb
+P(T_{(e,f)}) &\leq& 2^{2-2n}n^{-1},
+\eQe
+with equality being achieved when $e$ and $f$ share exactly one vertex.
 
 \bigskip
 
@@ -237,7 +240,7 @@ peacebreaker. Hence, we have proven the claim.
 
 By the established lemma, we obtain
 \eQb
-\{ \text{ failure} \} &\implies& \bigcup_{(e,f) \in E \times E} T_{(e,f)}. 
+\{ \text{ failure} \} &\subseteq& \bigcup_{(e,f) \in E \times E} T_{(e,f)}. 
 \eQe
 As there are $m^2$ ordered pairs of edges in the hypergraph, by th above equality,
 and the subadditivity of probability, we obtain
