@@ -92,7 +92,7 @@ From the analysis of the combinatorial geometry section $3.3$, it follows that
 Pr(b \leq |QR| \leq b + db) \leq 2\pi b db,
 \eQe
 where $b$ denotes the distance between $P$ and $R$. Given the distance $b$, we must
-have $b < \dfrac{2\epsilon}{b}$ to ensure that the area is less than $\epsilon$. 
+have $h < \dfrac{2\epsilon}{b}$ to ensure that the area is less than $\epsilon$. 
 An upper bound to the area of such region is $4\dfrac{2\epsilon}{b}\sqrt{2} = 
 \dfrac{4\sqrt{2}\epsilon}{b}$, which can be seen from using the $\sqrt{2}$
 middle strip. Now, the probability that $S$ lies in such region is
@@ -110,7 +110,7 @@ f(\epsilon) &\leq& \int_{b=0}^{4\sqrt{2}\epsilon} 2
 + c \int_{b= 4\sqrt{2} \epsilon}^{1} \dfrac{\epsilon^2}{b} db, 
 \eQe
 where $c$ is the constant associated from the original integral. Now, observe that the 
-first integral is $O(\epsilon^2)$ and the second integral is $O(\epsilon^2 \ln(\epsilon))$.
+first integral is $O(\epsilon^2)$ and the second integral is $O(\epsilon^2 \ln(\epsilon^{-1}))$.
 Therefore, we have shown that $f(\epsilon) = O(\epsilon^2 \ln(\epsilon))$.
 \hfill $\qed$
 \end{solution}
