@@ -167,7 +167,17 @@ but not gonna think too hard about it for now. \hfill $\qed$
 \end{figure}
 \end{question}
 \begin{solution}
-
+With simple computation, we can see that
+\eQb
+\sigma_i^2 = \dfrac{35}{12} \> \text{ and } \> \sigma_2 = \dfrac{35}{12}.
+\eQe
+As $Y_i$ are uniformly bounded, by the use of Chernoff bound, it follows that
+\eQb
+P(Y > a\sigma ) < e^{-\frac{a^2}{2}(1+o(1))}.
+\eQe
+Therefore, we must have $\frac{a^2}{2} = \ln(n), 10\ln(n) , \sqrt{n}$. Solving these respectively,
+we obtain that $a = (2\ln(n))^{\frac{1}{2}}, (20\ln(n))^{\frac{1}{2}}, 2^{\frac{1}{2}} n^{\frac{1}{4}}$.
+\hfill $\qed$ 
 \end{solution}
 
 \end{document}
